@@ -1,0 +1,142 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<form action="" class="add-form" [formGroup]="todoFormGroup">
+  <div mat-dialog-content class="dialog-box">
+    <p>Add a task</p>
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          name="title"
+          formControlName="title"
+          placeholder="title"
+        />
+      </mat-form-field>
+      <div
+        class="error-message"
+        *ngIf="title.touched && title.invalid && !title.value"
+      >
+        Title is required
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          name="description"
+          formControlName="description"
+          minlength="10"
+        ></textarea>
+      </mat-form-field>
+      <div
+        class="error-message"
+        *ngIf="description.touched && description.invalid && !description.value"
+      >
+        Description is required
+      </div>
+
+      <div class="error-message" *ngIf="description.hasError('minlength')">
+        Description length should be greater than 10
+      </div>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input
+          matStartDate
+          placeholder="Start date"
+          name="startTime"
+          formControlName="startTime"
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          name="endTime"
+          formControlName="endTime"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+  <div class="dependency-section">
+    <div class="dependency-button-container">
+      <button mat-icon-button (click)="onAddDependency()">
+        <mat-icon class="material-icons-outlined">add</mat-icon>
+      </button>
+    </div>
+    <span>Add Dependencies</span>
+    <div>
+      <div class="form-array-container" formArrayName="dependencies">
+        <div *ngFor="let dependency of dependencies.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="dependency-input-container">
+              <div class="input">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Add</mat-label>
+                  <input
+                    matInput
+                    name="dependency"
+                    formControlName="dependency"
+                    placeholder="Dependency"
+                  />
+                </mat-form-field>
+                <mat-error
+                  *ngIf="
+                    dependency.get('dependency').hasError('required') &&
+                    dependency.get('dependency').touched
+                  "
+                  >Field Required</mat-error
+                >
+              </div>
+              <div>
+                <button (click)="onDeleteDependency(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div mat-dialog-actions class="action-buttons">
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+
+  <div class="cancel-button">
+    <button
+      mat-raised-button
+      color="warn"
+      [mat-dialog-close]="false"
+      cdkFocusInitial
+    >
+      Cancel
+    </button>
+  </div>
+  <div class="add-button">
+    <button
+      *ngIf="!isTodoEdit"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!todoFormGroup.valid"
+      (click)="onSubmit()"
+    >
+      Add
+    </button>
+    <div class="update-button">
+      <button
+        *ngIf="isTodoEdit"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</div>

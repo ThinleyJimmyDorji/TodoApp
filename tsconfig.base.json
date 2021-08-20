@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@angular-nx/dashboard": ["libs/dashboard/src/index.ts"],
+      "@angular-nx/lib": ["libs/lib/src/index.ts"],
+      "@angular-nx/ui": ["libs/ui/src/index.ts"],
+      "@angular-nx/ui/header": ["libs/ui/header/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,71 @@
+{
+  "tasks": [
+    {
+      "id": 23,
+      "title": "Learn Angular forms",
+      "description": "FormArray, FormControl, FormBuilders...",
+      "startTime": "2021-08-17T18:00:00.000Z",
+      "endTime": "2021-08-18T18:00:00.000Z",
+      "status": "completed",
+      "dependencies": [
+        {
+          "dependency": "dummy"
+        }
+      ]
+    },
+    {
+      "title": "Homework on  angular 12 ++ yes???",
+      "description": "Learn angular directives and dependency injection",
+      "startTime": "2021-08-17T18:00:00.000Z",
+      "endTime": "2021-08-18T18:00:00.000Z",
+      "dependencies": [
+        {
+          "dependency": "Angular 12 "
+        },
+        {
+          "dependency": "Dummy"
+        }
+      ],
+      "status": "pending",
+      "id": 24
+    },
+    {
+      "id": 28,
+      "title": "This is the new todo task, yes brand new",
+      "description": "new todo task",
+      "startTime": "2021-08-18T18:00:00.000Z",
+      "endTime": "2021-08-19T18:00:00.000Z",
+      "status": "completed",
+      "dependencies": [
+        {
+          "dependency": "todo"
+        },
+        {
+          "dependency": "todo"
+        },
+        {
+          "dependency": "todo"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Do laundry",
+      "description": "wash all the clothes",
+      "startTime": "2021-08-18T18:00:00.000Z",
+      "endTime": "2021-08-19T18:00:00.000Z",
+      "status": "completed",
+      "dependencies": [
+        {
+          "dependency": "soap"
+        },
+        {
+          "dependency": "water"
+        },
+        {
+          "dependency": "bucket"
+        }
+      ]
+    }
+  ]
+}
